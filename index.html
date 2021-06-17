@@ -7,6 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="board/board.html">Board</a>
+    <div class="board">Board</div>
+    <div class="notes">Notes</div>
+    <div class="chat">Chat</div>
 </body>
+<script >
+    document.querySelector(".board").addEventListener("click",function(){
+        window.location.assign("board/board.html")
+    })
+    document.querySelector(".notes").addEventListener("click",function(){
+        window.location.assign("notes/notes.html")
+    })
+    document.querySelector(".chat").addEventListener("click",function(){
+        window.location.assign("chat-app/chat.html")
+    })
+</script>
+
 </html>
