@@ -13,6 +13,10 @@ let shapeOptions = document.querySelector(".shape-options");
 let typeOfShape = document.querySelectorAll(".shape-options>*");
 let shape = document.querySelector(".shapes");
 let shapeFlag = false;
+//zoom in zoomout var
+let zoomIn=document.querySelector(".zoom-in");
+let zoomOut=document.querySelector(".zoom-out")
+let scaleLevel =1;
 //clear canvas variable
 let clearCanvas = document.querySelector(".clear");
 //undo and redo on canvas
@@ -228,4 +232,19 @@ save.addEventListener("click", function(){
       
       a.click();
       a.remove();
+})
+
+
+
+zoomIn.addEventListener("click",function(){
+ if(scaleLevel<1.7){
+     scaleLevel+=0.1
+    canvas.style.transform=`scale(${scaleLevel})`;
+ }
+})
+zoomOut.addEventListener("click",function(){
+    if(scaleLevel>1.0){
+        scaleLevel-=0.1
+        canvas.style.transform=`scale(${scaleLevel})`;
+    }
 })
