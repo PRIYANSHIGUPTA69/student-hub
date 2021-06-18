@@ -42,8 +42,10 @@
             <button class = "clear" title = "Clear the canvas"> Clear
                 <!-- <i class="fas fa-eraser erase"></i> -->
             </button>
+            
+            <input class = "randomCol" type = "color" title = "Select Random Color" placeholder="color"></input>
             <div class="stickyNote">
-                <img src="./shapes/StickyNote (1).svg" alt="" srcset="" style="width: 2rem; height: 2rem;">
+                <img src="./shapes/StickyNote (1).svg" alt="" srcset="" class="Sticky">
             </div>
             <div class="shapes">
                 <i class="fas fa-shapes"></i>
@@ -60,34 +62,35 @@
                     </div>
                     
                     <div >
-                        <img src="./shapes/rectangle.png" class="rectangle" style="width: 2rem; height: 2rem;">
+                        <img src="./shapes/rectangle.png" class="rectangle"  style="width: 2rem; height: 2rem;">
                     </div>
                     
                 </div>
             </div>
+            <div class = "otherOperations">
+                <button class="zoom-in">
+                    <i class="fas fa-search-plus icon"></i>
+                </button>
+                <button class="zoom-out">
+                    <i class="fas fa-search-minus icon"></i>
+                </button>
+                <button class = "save" title = "Save" >
+                    <i class="fas fa-download icon"></i>
+                </button>
+                <button class = "undo" title = "Undo" >
+                    <i class="fas fa-undo icon"></i>
+                </button>  
+                <button class = "redo" title = "Redo">
+                    <i class="fas fa-redo icon"></i>
+                </button>
+            </div>
         </div>
-      
-        <input class = "randomCol" type = "color" title = "Select Random Color"></input>
-        <div class = "otherOperations">
-            <button class="zoom-in">
-                <i class="fas fa-search-plus icon"></i>
-            </button>
-            <button class="zoom-out">
-                <i class="fas fa-search-minus icon"></i>
-            </button>
-            <button class = "save" title = "Save" >
-                <i class="fas fa-download icon"></i>
-            </button>
-            <button class = "undo" title = "Undo" >
-                <i class="fas fa-undo icon"></i>
-            </button>  
-            <button class = "redo" title = "Redo">
-                <i class="fas fa-redo icon"></i>
-            </button>
-        </div>
+     
+        
     </div>
    
     <script src="board.js"></script>
     <script src="shape.js"></script>
+    <script src="stick.js"></script>
 </body>
 </html>
