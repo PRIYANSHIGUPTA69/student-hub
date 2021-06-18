@@ -42,6 +42,7 @@ function appendMessage(msg, type) {
 
 // Recieve messages 
 socket.on('message', (msg) => {
+    
     appendMessage(msg, 'incoming')
     scrollToBottom()
 })
