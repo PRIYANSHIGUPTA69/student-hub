@@ -6,6 +6,7 @@ let editor = document.querySelector(".editor");
 let iframe = document.querySelector(".iframe")
 let darkMode = document.querySelector(".dark-mode");
 let lightMode = document.querySelector(".light-mode");
+// resize the editor size
 function drag(e){
     e.preventDefault();
     document.selection?document.selection.empty():

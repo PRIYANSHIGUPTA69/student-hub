@@ -40,9 +40,9 @@ canvas.height = Number(window.innerHeight); //canvas hight
 let x; //for x-cordinate
 let y; //for y-cordinates
 
-canvas.addEventListener("mousedown", brushDown, false);
-canvas.addEventListener("mousemove", brushMove, false);
-canvas.addEventListener("mouseup", brushUp, false);
+canvas.addEventListener("mousedown", PencilDown, false);  // canvas events
+canvas.addEventListener("mousemove", PencilMove, false);
+canvas.addEventListener("mouseup", PencilUp, false);
 
 let background = new Image();
 background.onload = function () {
@@ -56,7 +56,7 @@ function getCoordinates(canvas, e) {
   };
 }
 
-function brushDraw(canvas, x, y) {
+function drawOverCanvas(canvas, x, y) {
   if (isPressed) {
     tool.lineTo(x, y);
     tool.stroke();
@@ -64,7 +64,7 @@ function brushDraw(canvas, x, y) {
   }
 }
 
-function brushDown(e) {
+function PencilDown(e) {
   isPressed = true;
   let coordinates = getCoordinates(canvas, e);
   tool.lineWidth = 5;
@@ -77,14 +77,14 @@ function brushDown(e) {
   tool.closePath();
 }
 
-function brushMove(e) {
+function PencilMove(e) {
   let coordinates = getCoordinates(canvas, e);
   x = coordinates.x;
   y = coordinates.y;
-  brushDraw(canvas, x, y);
+  drawOverCanvas(canvas, x, y);
 }
 
-function brushUp(e) {
+function PencilUp(e) {
   isPressed = false;
   undoRedoTracker.push(canvas.toDataURL());
   track = undoRedoTracker.length - 1;
@@ -114,9 +114,9 @@ penBtn.addEventListener("click", function () {
     tool.strokeStyle = personalbar;
   }
   penFlag = !penFlag;
-  canvas.addEventListener("mousedown", brushDown, false);
-  canvas.addEventListener("mousemove", brushMove, false);
-  canvas.addEventListener("mouseup", brushUp, false);
+  canvas.addEventListener("mousedown", PencilDown, false);
+  canvas.addEventListener("mousemove", PencilMove, false);
+  canvas.addEventListener("mouseup", PencilUp, false);
 });
 
 shape.addEventListener("click", function (e) {
@@ -145,50 +145,14 @@ shape.addEventListener("click", function (e) {
           tool.lineTo(300, 200);
           tool.lineTo(400, 300);
           tool.stroke();
-        } else {  //draw rectanglr
+        } else {  //draw rectanglw
           tool.rect(120, 170, 60, 60);
           tool.stroke();
         }
-        /*     let initialX = null;
-    let initialY = null;
-    let isStickyDown = false;
-  
-    // added move sticky logic
-    navBar.addEventListener("mousedown", function(e) {
-      initialX = e.clientX;
-      initialY = e.clientY;
-      isStickyDown = true;
-    });
-  
-    navBar.addEventListener("mousemove", function(e) {
-      if (isStickyDown == true) {
-        let finalX = e.clientX;
-        let finalY = e.clientY;
-  
-        let diffX = finalX - initialX;
-        let diffY = finalY - initialY;
-  
-        let { top, left } = stickyPad.getBoundingClientRect();
-  
-        stickyPad.style.top = top + diffY + "px";
-        stickyPad.style.left = left + diffX + "px";
-  
-        initialX = finalX;
-        initialY = finalY;
-      }
-    });
-    // sticky => mouseup
-    navBar.addEventListener("mouseup", function() {
-      isStickyDown = false;
-    });
-    // pointer => moved off sticky
-    navBar.addEventListener("mouseleave", function() {
-      isStickyDown = false;
-    });* */
       });
     }
   }
-  shapeFlag = !shapeFlag;
+  shapeFlag = !shapeFlag;  
 });
 
 eraseBtn.addEventListener("click", function () {
@@ -196,21 +160,14 @@ eraseBtn.addEventListener("click", function () {
   pencilColor = "white";
   tool.strokeStyle = pencilColor;
   eraserActive = true;
-  canvas.addEventListener("mousedown", brushDown, false);
-  canvas.addEventListener("mousemove", brushMove, false);
-  canvas.addEventListener("mouseup", brushUp, false);
+  canvas.addEventListener("mousedown",PencilDown, false);
+  canvas.addEventListener("mousemove", PencilMove, false);
+  canvas.addEventListener("mouseup", PencilUp, false);
 });
 
-//saving the drawn image into gallery
-/*
-let saveBtn = document.querySelector(".save");
-saveBtn.addEventListener("click", function () {
-  tool.drawImage(canvas, 0, 0);
-  addMediaToGallery(canvas.toDataURL(), "img");
-});*/
+
 
 undoBtn.addEventListener("click", (e) => {
-  //canvas.addEventListener("mouseup",brushUp, false);
   removeOptions();
   if (track >= 0) track--;
  tool.clearRect(0, 0, canvas.width, canvas.height);
@@ -222,7 +179,6 @@ undoBtn.addEventListener("click", (e) => {
 });
 
 redoBtn.addEventListener("click", (e) => {
-  //canvas.addEventListener("mouseup",brushUp, false);
   removeOptions();
   if (track < undoRedoTracker.length - 1) track++;
  let img = new Image();
@@ -259,9 +215,6 @@ function removeOptions() {
 
 save.addEventListener("click", function(){
     let a=document.createElement("a");
-    // tool.scale(scaleLevel,scaleLevel);
-   // tool.fillStyle="white";
-   // tool.fillRect(0,0,board.width,board.height);
       let url=canvas.toDataURL();
       a.href=url;
       a.download="file.jpeg";
@@ -269,18 +222,15 @@ save.addEventListener("click", function(){
       a.click();
       a.remove();
 })
-
-
-
 zoomIn.addEventListener("click",function(){
- if(scaleLevel<1.7){
+ if(scaleLevel<1.5){ // scale level agr 1.5 s km h tbhi tk zoom in krna h
      scaleLevel+=0.1
     canvas.style.transform=`scale(${scaleLevel})`;
  }
 })
 zoomOut.addEventListener("click",function(){
-    if(scaleLevel>1.0){
-        scaleLevel-=0.1
+    if(scaleLevel>1.0){   // scale level 1 s bda h 
+        scaleLevel-=0.1 
         canvas.style.transform=`scale(${scaleLevel})`;
     }
 })

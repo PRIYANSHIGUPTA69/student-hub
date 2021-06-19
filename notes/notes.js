@@ -41,7 +41,6 @@ function createTicketFromLocalStorage(taskObj) {
     addFunctionality(taskContainer);
 }
 
-
 for (let i = 0; i < filterColor.length; i++) {
     filterColor[i].addEventListener("click", function() {
         let classes = filterColor[i].getAttribute("class");
