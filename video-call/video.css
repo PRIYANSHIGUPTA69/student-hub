@@ -138,15 +138,16 @@ body {
   background-color: #2f80ec;
   color: white;
 }
-.button2{
-  margin-top: 0.2rem;
-  border-radius: 50%;
+
+.button2 {
   height: 2.5rem;
   width: 2.8rem;
   text-align: center;
   outline: none;
   border: none;
   padding-top: 0.4rem;
+  margin-top: 0.2rem;
+  border-radius: 50%;
   font-size: 1.5rem;
   background-color: #2f80ec;
   color: white;
