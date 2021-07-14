@@ -32,7 +32,7 @@ let tool = canvas.getContext("2d");
 let isPressed = false;
 
 let pencilColor = "black";
-let colors = document.querySelectorAll(".pen-options.color-bar.penColors .color");
+let colors = document.querySelectorAll(".color");
 
 canvas.width = Number(window.innerWidth); //canvas width
 canvas.height = Number(window.innerHeight); //canvas hight
@@ -95,7 +95,11 @@ clearCanvas.addEventListener("click", function () {
   tool.clearRect(0, 0, canvas.width, canvas.height);
 });
 // pick pencil color to draw
-
+for (let i = 0; i < colors.length; i++) {
+  colors[i].addEventListener("click", function () {
+    tool.strokeStyle = colors[i].style.color;
+     });
+}
 penBtn.addEventListener("click", function () {
   if (shapeFlag) {    // agr phle s shape options dispay ho rhe h toh unhe display  none krdo
     shapeOptions.style.display = "none";
@@ -103,28 +107,16 @@ penBtn.addEventListener("click", function () {
   }
   if (penFlag == false) {  // first time click on pencil
     penOptions.style.display = "flex";
-    console.log("hii")
-    let colorsArr = penOptions.querySelectorAll(".color")
-    for (let i = 0; i < colorsArr.length; i++) {
-      colorsArr[i].addEventListener("click", function () {
-        console.log(colorsArr[i])
-        pencilColor=colorsArr[i].style.color;
-        tool.strokeStyle = "red";
-         });
-    }
-    canvas.addEventListener("mousedown", PencilDown, false);
-    canvas.addEventListener("mousemove", PencilMove, false);
-    canvas.addEventListener("mouseup", PencilUp, false);
-    
   } else {
     penOptions.style.display = "none";
-    tool.strokeStyle = "black";
-    canvas.addEventListener("mousedown", PencilDown, false);
-    canvas.addEventListener("mousemove", PencilMove, false);
-    canvas.addEventListener("mouseup", PencilUp, false);
+    let penColor = document.querySelector(".randomCol");
+    pencilColor = penColor.value;
+    tool.strokeStyle = personalbar;
   }
   penFlag = !penFlag;
- 
+  canvas.addEventListener("mousedown", PencilDown, false);
+  canvas.addEventListener("mousemove", PencilMove, false);
+  canvas.addEventListener("mouseup", PencilUp, false);
 });
 
 shape.addEventListener("click", function (e) {

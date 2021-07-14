@@ -98,7 +98,7 @@ for (let i = 0; i < modalColors.length; i++) {
     modalColors[i].addEventListener("click", function() {
         let color = modalColors[i].classList[1];
         iColor = color;
-        // remove everyone
+        // remove every containner
         for (let j = 0; j < modalColors.length; j++) {
             modalColors[j].classList.remove("border");
         }

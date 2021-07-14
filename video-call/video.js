@@ -91,8 +91,7 @@ window.addEventListener("load", function (e) {
       document.querySelector(".show-peer").innerHTML = "connected";
       let videoEle = document.createElement("video");
       videoEle.srcObject = stream;
-      videoEle.style.height = 450 + "px";
-      videoEle.style.width = 800 + "px";
+     
       videoEle.style.borderRadius = 10 + "px";
       videoEle.play();
       document.querySelector(".remote-video").append(videoEle);

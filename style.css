@@ -110,3 +110,34 @@ i:hover{
                
             }
         }
+        @media screen and (max-width: 425px){
+            body{
+                overflow: auto;
+                background-color: rgb(86, 89, 92);
+  
+            }
+            .header{
+                text-shadow: 2px 2px gray;
+                width: 100%;
+                    height: 10vh;
+                    font-size: 3rem;
+                    font-weight: bold;
+                    text-align: center;
+                    background-color: rgb(49, 50, 51);
+                    color:white;
+                   padding-top: 1.5rem;
+                   border-bottom: .23em solid rgb(23, 218, 175);
+                }
+            .main-container{
+                
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40vh;
+     
+
+            }
+            .main-container>*{
+                min-width:200px;
+            }
+        }
